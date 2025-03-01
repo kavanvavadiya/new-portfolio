@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export function HeroSection() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-8 lg:grid-cols-[1fr_450px] xl:grid-cols-[1fr_600px]">
           <motion.div
             className="flex flex-col justify-center space-y-5"

@@ -30,7 +30,7 @@ export function SkillsSection() {
 
   return (
     <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="container  mx-auto px-4 md:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Skills</h2>
           <p className="mx-auto mt-2 max-w-2xl text-muted-foreground md:text-lg">

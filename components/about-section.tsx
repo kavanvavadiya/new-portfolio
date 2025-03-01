@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export function AboutSection() {
   return (
     <section id="about" className="py-20 md:py-28 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-950 cursor-default">
-      <div className="container px-6 md:px-12">
+      <div className="container  mx-auto px-6 md:px-12">
         <div className="flex flex-col items-center justify-center text-center space-y-6">
           <motion.div 
             className="space-y-3"
