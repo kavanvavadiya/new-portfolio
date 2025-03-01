@@ -6,8 +6,19 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string[];
+  tech: string[];
+  thumbnail: string;
+  codeLink?: string;
+  demoLink?: string;
+}
+
+const projects: Project[] = [
   {
+    id: 1,
     title: "Inter IIT App",
     description: [
       "Implemented robust email OTP authentication for secure access.",
@@ -15,11 +26,10 @@ const projects = [
       "Used AWS services like EC2, S3, and CloudWatch for scalable deployment."
     ],
     tech: ["Node.js", "AWS", "EC2", "S3"],
-    thumbnail: "projects/interiitapp.jpg",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/interiitapp.jpg",
   },
   {
+    id: 2,
     title: "Sports App",
     description: [
       "Developed a fully responsive web app using the MEAN stack.",
@@ -27,11 +37,10 @@ const projects = [
       "Implemented SSO login in Express for seamless authentication."
     ],
     tech: ["MEAN Stack", "Express", "SSO"],
-    thumbnail: "projects/sportsapp.png",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/sportsapp.png",
   },
   {
+    id: 3,
     title: "E-Commerce Site",
     description: [
       "Built a front-end using React Native with reusable UI components.",
@@ -39,11 +48,10 @@ const projects = [
       "Used React functional components and hooks to optimize performance."
     ],
     tech: ["React Native", "React Router", "UI Components"],
-    thumbnail: "projects/ecom.jpg",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/ecom.jpg",
   },
   {
+    id: 4,
     title: "Social Media Website",
     description: [
       "Developed a full-stack social media platform using the MERN stack.",
@@ -51,11 +59,10 @@ const projects = [
       "Enhanced security and performance with authentication tokens and error handling."
     ],
     tech: ["MERN Stack", "Socket.io", "Authentication"],
-    thumbnail: "projects/socialmedia.png",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/socialmedia.png",
   },
   {
+    id: 5,
     title: "My Notes Web App",
     description: [
       "Developed a responsive front-end using React with reusable components.",
@@ -63,20 +70,17 @@ const projects = [
       "Implemented React Hooks for state management and efficient navigation."
     ],
     tech: ["React", "Django", "REST API"],
-    thumbnail: "projects/notes.png",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/notes.png",
   },
   {
+    id: 6,
     title: "Modern Helping Aid",
     description: [
       "Integrated object detection and distance sensors with voice alerts.",
       "Developed a web interface to control a camera frame using LiDAR for distance measurement."
     ],
     tech: ["OpenCV", "NumPy", "LiDAR"],
-    thumbnail: "projects/helpingaid.png",
-    // codeLink: "#",
-    // demoLink: "#",
+    thumbnail: "/projects/helpingaid.png",
   },
 ];
 
@@ -91,8 +95,8 @@ export function ProjectsSection() {
           </p>
         </div>
         <div className="mx-auto grid max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
@@ -100,7 +104,7 @@ export function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="flex flex-col overflow-hidden">
       <div className="w-full h-56 relative">
@@ -129,24 +133,26 @@ function ProjectCard({ project }) {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        {project.codeLink && (
-          <Button variant="ghost" size="sm" className="gap-1" asChild>
-            <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-              <Github className="h-4 w-4" />
-              Code
-            </a>
-          </Button>
-        )}
-        {project.demoLink && (
-          <Button variant="ghost" size="sm" className="gap-1" asChild>
-            <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4" />
-              Demo
-            </a>
-          </Button>
-        )}
-      </CardFooter>
+      {(project.codeLink || project.demoLink) && (
+        <CardFooter className="flex justify-between">
+          {project.codeLink && (
+            <Button variant="ghost" size="sm" className="gap-1" asChild>
+              <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4" />
+                Code
+              </a>
+            </Button>
+          )}
+          {project.demoLink && (
+            <Button variant="ghost" size="sm" className="gap-1" asChild>
+              <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="h-4 w-4" />
+                Demo
+              </a>
+            </Button>
+          )}
+        </CardFooter>
+      )}
     </Card>
   );
 }
